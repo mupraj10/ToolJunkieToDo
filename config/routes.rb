@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "application#hello"
+  # actions for other routes
+  resources :task_lists do
+    # bringing in the task items
+    resources :task_items
+  end
+  resources :users
+
+  # inital landing page route
+  # root "application#hello"
+  root "task_lists#index"
 end
