@@ -1,8 +1,11 @@
-<li>
+<div>
 
-<span class="content"><%= task_item.content %></span>
+<p class="content"><%= task_item.content %></p>
  
-    Deadline  <span class="timestamp"><%= task_item.deadline %>.</span>
+<p> Deadline  <span class="timestamp"><%= task_item.deadline %>.</span> </p>
 
-</li>
+<%= link_to "Delete", task_list_task_items_path(@task_list, task_item_url), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
+</div>
 

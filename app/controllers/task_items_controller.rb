@@ -60,6 +60,16 @@ class TaskItemsController < ApplicationController
     redirect_to task_lists_url, sucess: "To Do created!"
   end
 
+  def destroy
+    @task_item = @task_list.task_items.find(params[:id])
+    if @task_item_destroy
+      flash[:sucess] = @task_item + "was deleted!"
+    else
+      flash[:error] = "Item could not be deleted!"
+    end
+    redirect_to task_lists_url
+  end
+
   private
 
   def set_task_list
