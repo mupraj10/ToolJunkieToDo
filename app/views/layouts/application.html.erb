@@ -7,16 +7,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= render 'layouts/shim' %>
   </head>
+    <%= render 'layouts/header' %> 
+    <%# this would be like splitting the components== partials %>
 
   <body>
-
-        <div> 
-            <ul> 
-            <li><%= link_to "Sign up!", '' %></li>
-               <li><%= link_to "Sign in!", '' %></li>
-            </ul>
-        </div>
-    <%= yield %>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
