@@ -5,4 +5,8 @@ class TaskItem < ApplicationRecord
   # validations
   validates :task_list_id, presence: true
   validates :content, presence: true
+
+  def completed?
+    !completed_at.blank?
+  end
 end

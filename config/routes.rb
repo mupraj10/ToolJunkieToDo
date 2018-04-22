@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users
   # actions for other routes
-  resources :task_lists, shallow: true do
+  resources :task_lists do
     # bringing in the task items
     resources :task_items do
       member do

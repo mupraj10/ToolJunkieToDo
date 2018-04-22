@@ -57,7 +57,12 @@ class TaskItemsController < ApplicationController
   # POST /task_lists/:task_list_id/task_items
   def create
     @task_item = @task_list.task_items.create(task_item_params)
-    redirect_to task_lists_url, sucess: "To Do created!"
+    redirect_to @task_list, sucess: "To Do created!"
+  end
+
+  def complete
+    @task_item.update_attribute(:completed_at, Time.now)
+    redirect_to @task_list, notice: "Todo completed!!"
   end
 
   def destroy
@@ -67,21 +72,18 @@ class TaskItemsController < ApplicationController
     else
       flash[:error] = "Item could not be deleted!"
     end
-    redirect_to task_lists_url
+    redirect_to @task_list
   end
 
   private
 
   def set_task_list
-    @task_list = TaskList.includes(:task_items)
-      .where(user: current_user)
-      .find(params[:task_list_id])
+    @task_list = TaskList.find(params[:task_list_id])
   end
 
-  # find the correct task item
+  # # find the correct task item
   def set_task_item
     @task_item = @task_list.task_items.find(params[:id])
-    # @task_item = @current.user.task_list.task_items.find(params[:id])
   end
 
   def task_item_params
