@@ -1,6 +1,14 @@
-<p><%= task_item.content %></p> 
-<%# add in the deadline partt %>
+<li id="task_item-<%= task_item.id %>">
+
+<span class="content"><%= task_item.content %></span>
+  <span class="timestamp">
+    Deadline <%= time_ago_in_words(micropost.deadline) %>.
+  </span>
 
 <%= link_to "Delete", task_list_task_item_path(@task_list, task_item.id), method: :delete, data: {confirm: "Are you sure you want to delete this item?"} %>
 
 <%= link_to "Mark as Completed" , complete_task_list_task_item_path(@task_list, task_item.id), method: :patch %>
+</li>
+
+<%# <span><%= task_item.content add in the deadline partt %>
+

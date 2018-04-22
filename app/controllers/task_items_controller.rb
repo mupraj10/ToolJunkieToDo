@@ -3,6 +3,10 @@ class TaskItemsController < ApplicationController
   before_action :set_task_item, except: [:create]
   #   need those to do before any action happens
 
+  def index
+    @task_items = Task_item.all
+  end
+
   #   creating a new item under the task
   def create
     @task_item = @task_list.task_items.create(task_item_params)

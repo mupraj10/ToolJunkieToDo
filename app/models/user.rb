@@ -24,5 +24,5 @@ class User < ApplicationRecord
 
   #   creating associations for tasks
 
-  has_many :task_lists
+  has_many :task_lists, dependent: :destroy
 end
