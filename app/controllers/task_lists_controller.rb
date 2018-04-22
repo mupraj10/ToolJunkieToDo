@@ -1,18 +1,18 @@
 class TaskListsController < ApplicationController
   before_action :set_task_list, only: [:show, :edit, :update, :destroy]
-  # before_action :logged_in, only: [:create, :destroy]
 
   # GET /task_lists
   # GET /task_lists.json
   def index
-    @task_lists = TaskList.all
+    @task_lists = current_user.task_lists
+
+    # @task_lists = TodoList.all
   end
 
   # GET /task_lists/1
   # GET /task_lists/1.json
   def show
-    @user = current_user
-    # @task_item = @task_list.task_items
+    # @task_items = @task_lists.task_items
   end
 
   # GET /task_lists/new
@@ -37,17 +37,6 @@ class TaskListsController < ApplicationController
       render "static_pages/home"
     end
   end
-
-  # respond_to do |format|
-  #   if @task_list.save
-  #     format.html { redirect_to @task_list, notice: "Task list was successfully created." }
-  #     format.json { render :show, status: :created, location: @task_list }
-  #   else
-  #     format.html { render :new }
-  #     format.json { render json: @task_list.errors, status: :unprocessable_entity }
-  #   end
-  # end
-  # end
 
   # PATCH/PUT /task_lists/1
   # PATCH/PUT /task_lists/1.json

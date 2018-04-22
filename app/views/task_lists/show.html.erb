@@ -7,7 +7,13 @@
 
 
 <div id='task_items_wrapper'>
-  <%= render @task_lists.task_item %>
+ 
+ <%= render @task_list.task_items %>
+ 
+ Add a new to-do to this task!
+
+
+
     <div id='form'>
     <%= render "task_items/form" %>
     </div>
