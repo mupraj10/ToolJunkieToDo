@@ -1,5 +1,6 @@
 class TaskList < ApplicationRecord
-  # adding in the fact that the each task list belongs to a user
   belongs_to :user
-  has_many :task_items
+  has_many :task_items, dependent: :destroy
+  validates :user_id, presence: true
+  validates :title, presence: true
 end

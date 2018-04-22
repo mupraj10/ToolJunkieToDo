@@ -3,9 +3,11 @@ class CreateTaskItems < ActiveRecord::Migration[5.2]
     create_table :task_items do |t|
       t.string :content
       t.datetime :deadline
-      t.references :task_list, foreign_key: true
+      t.string :task_list
+      t.string :references
 
       t.timestamps
     end
+    add_index :task_items, [:task_list, :created_at]
   end
 end
