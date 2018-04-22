@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      redirect_to task_lists_url
 
       # logs in the user and sends them to user page
     else

@@ -2,12 +2,10 @@
 
 one:
   content: MyString
-  deadline: 2018-04-22 00:06:46
-  task_list: MyString
-  references: MyString
+  deadline: 2018-04-22 15:53:33
+  task_list: one
 
 two:
   content: MyString
-  deadline: 2018-04-22 00:06:46
-  task_list: MyString
-  references: MyString
+  deadline: 2018-04-22 15:53:33
+  task_list: two

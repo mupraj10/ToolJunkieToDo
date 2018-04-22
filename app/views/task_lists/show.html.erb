@@ -7,11 +7,11 @@
 
 
 <div id='task_items_wrapper'>
-<%= render @task_list.task_items %>
-<div id='form'>
-<%= render "task_items/form" %>
-</div>
+  <%= render @task_lists.task_item %>
+    <div id='form'>
+    <%= render "task_items/form" %>
+    </div>
 </div>
 
-<%= link_to 'Edit', edit_task_list_path(@task_list) %> |
+<%= link_to 'Edit Task Title', edit_task_list_path(@task_list) %> |
 <%= link_to 'Back', task_lists_path %>

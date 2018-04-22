@@ -11,8 +11,8 @@ class TaskListsController < ApplicationController
   # GET /task_lists/1
   # GET /task_lists/1.json
   def show
-    @user = User.find(params[:id])
-    @task_lists = @user.task_lists
+    @user = current_user
+    # @task_item = @task_list.task_items
   end
 
   # GET /task_lists/new
@@ -27,25 +27,26 @@ class TaskListsController < ApplicationController
   # POST /task_lists
   # POST /task_lists.json
   def create
-    #   @task_list = current_user.task_lists.build(task_list_params)
+    @task_list = current_user.task_lists.build(task_list_params)
 
-      if @task_list.save
-        flash[:success] = "New Task Created!"
-        redirect_to root_url
-      else
-        render "static_pages/home"
-      end
+    if @task_list.save
+      flash[:success] = "New Task Created!"
+      redirect_to task_lists_url
+    else
+      flash[:error] = "Something went wrong"
+      render "static_pages/home"
     end
+  end
 
-  #   respond_to do |format|
-  #     if @task_list.save
-  #       format.html { redirect_to @task_list, notice: "Task list was successfully created." }
-  #       format.json { render :show, status: :created, location: @task_list }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @task_list.errors, status: :unprocessable_entity }
-  #     end
+  # respond_to do |format|
+  #   if @task_list.save
+  #     format.html { redirect_to @task_list, notice: "Task list was successfully created." }
+  #     format.json { render :show, status: :created, location: @task_list }
+  #   else
+  #     format.html { render :new }
+  #     format.json { render json: @task_list.errors, status: :unprocessable_entity }
   #   end
+  # end
   # end
 
   # PATCH/PUT /task_lists/1
