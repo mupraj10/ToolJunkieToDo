@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   get "/help", to: "static_pages#help"
   get "/about", to: "static_pages#about"
-  # get "/signup", to: "userss#new"
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
 
   # get "static_pages/home"
   # get "static_pages/help"
-
+  resources :users
   # actions for other routes
   resources :task_lists do
     # bringing in the task items
@@ -17,8 +18,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  resources :userss
 
   # inital landing page route
   # root "application#hello"
