@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
+      log_in @user
+      flash[:success] = "Welcome to Tool Junkie's To Do!"
       redirect_to @user
     else
       render "new"
@@ -36,7 +37,10 @@ class UsersController < ApplicationController
 
   private
 
-  
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
@@ -66,7 +70,3 @@ end
 #       format.json { head :no_content }
 #     end
 #   end
-
-# def set_user
-#   @user = User.find(params[:id])
-# end
