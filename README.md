@@ -2,7 +2,7 @@
 # Task Definition
 I'm passionate about productivity #tooljunkie. I want to manage my tasks and projects more effectively. I need a simple tool that helps me control my task flow.
 
-> This is a coding challenge completed by Maggy Prajapati. To get the project running, `gem` and then `rails server`. 
+> This is a coding challenge completed by Maggy Prajapati. To get the project running, `bundle install` and then `rails server`. I have used sqlite3 as my database.
 
 
 ## Functional Requirements
