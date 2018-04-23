@@ -1,0 +1,39 @@
+for adding milestones, 
+
+I would do add a model called task_milestones
+
+rails g model task_milestones title:string priority:integer task_item_id:references
+
+Model schema would be 
+title - string 
+priority - integer 
+task_list - referenced 
+
+ordering by priority
+
+Associations would be 
+
+milestones belongs to task_list 
+milestones belong to user through task_list
+task_list has many milestones
+
+form.erb.html 
+
+adding a milestone
+    - have text file for title
+    - have select from 1 - 5 for priority 
+
+milestone.erb.html
+display a milestone
+it would be in same list with a heading of milestones under task_items 
+
+it would have controller actions of 
+
+create 
+
+edit / update 
+
+destroy 
+
+and be similar to those of task_items
+
