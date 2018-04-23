@@ -5,4 +5,8 @@ module TaskItemsHelper
     # d = Date.parse(deadline)
     Date.parse(deadline - Date.today).to_i
   end
+
+  def dateChange(dt)
+    dt.strftime("%m/%d/%Y")
+  end
 end
