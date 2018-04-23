@@ -13,6 +13,7 @@ I'm passionate about productivity #tooljunkie. I want to manage my tasks and pro
 
 
 > * You can sign up using the link on the navbar. Once signed in you will be able to see extra menu options as tasks, account, settings. 
+>* **Make sure to take a look at Help!**
 > * Sign in/Login was done using Rails Tutorial Basic I could have used `devise` but I got confused trying it so went with the simplier way. 
 > * You can Create, Update and Delete Task Lists as well as Task Items 
 > * You are able to set a deadline but it just shows the date in UTC
