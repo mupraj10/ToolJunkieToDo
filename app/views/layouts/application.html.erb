@@ -7,9 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+      <%= render 'layouts/shim' %>
   </head>
+    <%= render 'layouts/header' %> 
+    <%# this would be like splitting the components== partials %>
 
   <body>
-    <%= yield %>
+    
+    <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+  <div class="box">
+      <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

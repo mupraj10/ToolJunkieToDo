@@ -4,12 +4,15 @@ class TaskListsController < ApplicationController
   # GET /task_lists
   # GET /task_lists.json
   def index
-    @task_lists = TaskList.all
+    @task_lists = current_user.task_lists
+
+    # @task_lists = TodoList.all
   end
 
   # GET /task_lists/1
   # GET /task_lists/1.json
   def show
+    # @task_items = @task_lists.task_items
   end
 
   # GET /task_lists/new
@@ -24,16 +27,14 @@ class TaskListsController < ApplicationController
   # POST /task_lists
   # POST /task_lists.json
   def create
-    @task_list = TaskList.new(task_list_params)
+    @task_list = current_user.task_lists.build(task_list_params)
 
-    respond_to do |format|
-      if @task_list.save
-        format.html { redirect_to @task_list, notice: 'Task list was successfully created.' }
-        format.json { render :show, status: :created, location: @task_list }
-      else
-        format.html { render :new }
-        format.json { render json: @task_list.errors, status: :unprocessable_entity }
-      end
+    if @task_list.save
+      flash[:success] = "New Task Created!"
+      redirect_to task_lists_url
+    else
+      flash[:error] = "Something went wrong"
+      render "static_pages/home"
     end
   end
 
@@ -42,7 +43,7 @@ class TaskListsController < ApplicationController
   def update
     respond_to do |format|
       if @task_list.update(task_list_params)
-        format.html { redirect_to @task_list, notice: 'Task list was successfully updated.' }
+        format.html { redirect_to @task_list, notice: "Task list was successfully updated." }
         format.json { render :show, status: :ok, location: @task_list }
       else
         format.html { render :edit }
@@ -56,19 +57,20 @@ class TaskListsController < ApplicationController
   def destroy
     @task_list.destroy
     respond_to do |format|
-      format.html { redirect_to task_lists_url, notice: 'Task list was successfully destroyed.' }
+      format.html { redirect_to task_lists_url, notice: "Task list was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task_list
-      @task_list = TaskList.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_list_params
-      params.require(:task_list).permit(:title, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task_list
+    @task_list = TaskList.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def task_list_params
+    params.require(:task_list).permit(:title)
+  end
 end
