@@ -1,6 +1,10 @@
 <%= form_for([@task_list, @task_list.task_items.build]) do |f| %>
+
 <%= f.text_field :content, placeholder: "New item" %>
+
 <p> If you have a deadline, select it. If not, leave it blank </p>
+
 <%= f.date_field :deadline, as: :date, value: f.object.try(:strftime, "%m/%d/%Y"), class: 'form-control' %>
+
 <%= f.submit %>
 <% end %>

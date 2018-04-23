@@ -15,16 +15,18 @@
   </div>
 
   <div class="complete">
-   Deadline  <span class="timestamp"><%= task_item.deadline %></span>
+   Deadline  <span class="timestamp"><%= task_item.deadline.strftime("%m/%d/%Y") %></span>
   </div>
 
   
   <div class="task_item">
    <p><%= task_item.content %> </p>
   </div>
+
    <div class="trash">
    <%= link_to "Edit", edit_task_list_task_item_path(@task_list, task_item.id) %>
   </div>
+  
   <div class="trash">
    <%= link_to "Delete", task_list_task_item_path(@task_list, task_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>

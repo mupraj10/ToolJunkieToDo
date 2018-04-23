@@ -18,17 +18,12 @@ class TaskItemsController < ApplicationController
   end
 
   def update
-    @task_item.update task_params
+    @task_item.update(task_item_params)
     redirect_to @task_list
   end
 
   def destroy
-    @task_item = @task_list.task_items.find(params[:id])
-    if @task_item_destroy
-      flash[:sucess] = @task_item + "was deleted!"
-    else
-      flash[:error] = "Item could not be deleted!"
-    end
+    @task_item.destroy
     redirect_to @task_list
   end
 
@@ -44,6 +39,6 @@ class TaskItemsController < ApplicationController
   end
 
   def task_item_params
-    params[:task_item].permit(:content)
+    params[:task_item].permit(:content, :deadline)
   end
 end
